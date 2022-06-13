@@ -20,7 +20,7 @@ function List(){
           </div>
                 {list?.map(lis => 
                   <span id="cont" key={lis.id}>
-                      <h4>{users?.map(u=><aside key={u.id}>{u.id === lis.userId && u.username}</aside>)}</h4>
+                      <h4>User:{users?.map(u=><aside key={u.id}>{u.id === lis.userId && u.username}</aside>)}</h4>
                       <label>Title: </label> <span className="resp-bd">{lis.title}</span>
                       <label>Description: </label> <span className="resp-bd">{lis.description}</span>
                       <label>Comments: </label> <span className="resp-bd">{!lis.comments ? 'There is not data' : lis.comments}</span>
