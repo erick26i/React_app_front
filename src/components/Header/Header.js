@@ -1,29 +1,24 @@
 import { NavLink } from "react-router-dom"
 import { useModal } from "../../Context/ModalContext"
 import { useToken } from "../../Context/TokenContext"
+import Profile from '../Profile/Profile'
 import Login from '../Login/Login'
-import Profile from "../Profile/Profile"
+import profileImg from '../../img/user.png'
 import './Header.css'
 
 function Header() {
-    const [token, setToken] = useToken()
+    const [token] = useToken()
     const [, setModal] = useModal()
-   
-    
+
   return (
     <header id="top-bar" onSubmit={e => e.preventDefault()}>
       <div>
-        <NavLink to="/">Inicio</NavLink>
-        <NavLink to="/service/list">Lista de tareas</NavLink>
-        {token && <NavLink to="/service/user/task">Añadir Comentario</NavLink>}
-        {token && <NavLink to="/service/add">Crear Servicio</NavLink>}
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/service/list">Services List</NavLink>
+        {token && <NavLink to="/service/add">Create Service</NavLink>}
       </div>
-      <div id="buttons">
-        {!token && <button id="login-butt" onClick={()=>setModal(<Login/>)}>Sign up </button>}
-        {token && <button id="logout-butt" onClick={()=>setToken('')}>Logout </button>}
-        {token && <Profile />}
-      </div>
-        
+        {!token && <img className="profileImg" src={profileImg} alt='profile' onClick={() => setModal(<Login/>)}/>}
+        {token && <Profile/>}
     </header>
   )
 }

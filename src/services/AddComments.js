@@ -1,12 +1,12 @@
 import { useState } from "react"
+import { useServiceId } from "../Context/IdContext"
 import { useModal } from "../Context/ModalContext"
 import { useToken } from "../Context/TokenContext"
-import { useUser } from "../Context/UserContext"
 import './AddComments.css'
 
 function AddComments(){
     const [token] = useToken()
-    const [username] = useUser()
+    const [id, setId] = useServiceId()
     const [comments, setComments] = useState()
     const [, setModal] = useModal()
 
@@ -19,7 +19,7 @@ function AddComments(){
             'Content-Type': 'application/json',
             'Authorization': token 
         },
-        body: JSON.stringify({ username, comments })
+        body: JSON.stringify({ id, comments })
     })
       return setModal(null)
     } catch (e) {
