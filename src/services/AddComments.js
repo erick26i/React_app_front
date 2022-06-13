@@ -6,7 +6,7 @@ import './AddComments.css'
 
 function AddComments(){
     const [token] = useToken()
-    const [id, setId] = useServiceId()
+    const [id] = useServiceId()
     const [comments, setComments] = useState()
     const [, setModal] = useModal()
 
