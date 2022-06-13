@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { useToken } from '../Context/TokenContext';
 
 function CreateService() {
-  const [token] = useToken();
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
+  const [token] = useToken()
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [comments, setComments] = useState('')
+  const [error, setError] = useState('')
+  const [status, setStatus] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,9 +19,10 @@ function CreateService() {
           Authorization: token,
         },
         body: JSON.stringify({ title, description }),
-      });
-      console.log(res);
+      })
+      setStatus('success')
     } catch (e) {
+      setError('error')
       console.warn(e);
     }
   };
@@ -27,7 +31,7 @@ function CreateService() {
     <aside>
       <form id='create-service' onSubmit={handleSubmit}>
         <label>
-          <span>Titulo:</span>
+          <span>Title:</span>
           <input
             name='title'
             value={title}
@@ -35,7 +39,7 @@ function CreateService() {
           />
         </label>
         <label>
-          <span>Descripcion:</span>
+          <span>Description:</span>
           <input
             name='description'
             type='text'
@@ -43,7 +47,22 @@ function CreateService() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </label>
-        <button>Crear Servicio</button>
+        <label>
+          <span>Comments:</span>
+          <input
+            name='comments'
+            type='text'
+            value={comments}
+            onChange={(e) => setComments(e.target.value)}
+          />
+        </label>
+        <button>Create Service</button>
+        {error ? <h3 className='error-message'>{error}</h3> : null}
+        {status ? (
+          <p className='service-create'>
+            Congratulations! Service Created!
+          </p>
+        ) : null}
       </form>
     </aside>
   );

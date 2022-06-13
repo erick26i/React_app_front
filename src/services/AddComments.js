@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useModal } from "../Context/ModalContext"
 import { useToken } from "../Context/TokenContext"
 import { useUser } from "../Context/UserContext"
 import './AddComments.css'
@@ -7,7 +8,8 @@ function AddComments(){
     const [token] = useToken()
     const [username] = useUser()
     const [comments, setComments] = useState()
-    
+    const [, setModal] = useModal()
+
     const handleSubmit = async e => {
     e.preventDefault()
     try {
@@ -19,6 +21,7 @@ function AddComments(){
         },
         body: JSON.stringify({ username, comments })
     })
+      return setModal(null)
     } catch (e) {
       console.warn(e)
     }
