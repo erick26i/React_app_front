@@ -25,7 +25,7 @@ function CreateService() {
       setError('error')
       console.warn(e);
     }
-  };
+  }
 
   return (
     <aside>
@@ -65,7 +65,7 @@ function CreateService() {
         ) : null}
       </form>
     </aside>
-  );
+  )
 }
 
 export default CreateService;
