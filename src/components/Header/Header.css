@@ -1,0 +1,50 @@
+#top-bar {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  background-color: #00aeff;
+  justify-content: space-between;
+}
+
+#login-butt {
+  border-radius: 7px;
+  background-color: #fce7cc;
+  color:black;
+  padding:6px 12px;
+}
+
+#logout-butt{
+  border-radius: 7px;
+  background-color: #fce7cc;
+  color:black;
+  padding:6px 12px;
+}
+
+#register-butt{
+  border-radius: 7px;
+  background-color: rgb(241, 173, 89);
+  color:black;
+  padding:6px 12px;
+  margin: 0 0 0 10px;
+}
+
+#register-butt:hover {
+  filter:brightness(1.0);
+  transition: 0.5s;
+}
+#login-butt:hover{
+  filter:brightness(1.2);
+  transition: 0.5s;
+}
+
+#top-bar a {
+  display: inline-block;
+  margin: 3px;
+  color: white;
+  text-decoration: none;
+}
+
+#top-bar a.active {
+  border-bottom: 1px solid #ccc;
+}

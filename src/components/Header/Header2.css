@@ -1,0 +1,18 @@
+#top-bar {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+ #top-bar a {
+    display: inline-block;
+    margin: 3px;
+    color: #444;
+    text-decoration: none;
+  }
+  
+  #top-bar a.active {
+    border-bottom: 1px solid #ccc;
+  }

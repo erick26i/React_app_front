@@ -1,0 +1,103 @@
+:root {
+  --btn-color: rgb(46, 46, 49);
+  --btn-bg-color: rgb(42, 172, 10);
+  --input-hoover: rgb(42, 172, 10);
+  --input: rgb(92, 90, 90);
+  --error: rgb(199, 55, 55);
+  --login-link: rgb(42, 172, 10);
+}
+
+h2 {
+  text-align: center;
+  color: rgb(75, 75, 75);
+}
+
+.log-contain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#login label {
+  display: block;
+}
+
+.logo {
+  max-width: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+#login input:hover {
+  border: 0.8px solid var(--input-hoover);
+}
+
+.account-text {
+  font-size: 0.8rem;
+}
+
+#login input {
+  width: 200px;
+  height: 20px;
+  border: 0.5px solid var(--input);
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.btn {
+  margin-top: 0.5rem;
+  padding: 0.7em 1.8em;
+  width: 214px;
+  border: 1.2px solid var(--btn-color);
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  text-align: center;
+  font-size: 16px;
+  transition: 0.3s;
+  z-index: 1;
+  font-family: inherit;
+  color: var(--btn-color);
+  cursor: pointer;
+}
+
+.btn::before {
+  content: '';
+  width: 0;
+  height: 450%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--btn-bg-color);
+
+  transition: 0.5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  width: 105%;
+}
+
+.btn:hover {
+  color: white;
+  font-weight: 700;
+  border: 1.2px solid var(--btn-bg-color);
+}
+
+#login p {
+  text-align: center;
+  color: rgb(75, 75, 75);
+}
+
+#login-link {
+  font-weight: 800;
+}
+
+#login-link:hover {
+  cursor: pointer;
+  color: var(--login-link);
+}

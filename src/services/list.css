@@ -1,0 +1,65 @@
+#cont{
+    display: block;
+    float: left;
+    margin: 0 0 3% 3%;
+    padding: 2%;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+    border-radius: 2px;
+    box-shadow: 3px 4px rgb(145, 145, 145);
+}
+
+label{
+    color: red;
+}
+
+.resp-bd{
+    color: blue;
+
+}
+
+.add-comment{
+    width: 25px;
+    height: 25px;
+    display:flex;
+}
+
+.comment-btn{
+    background-color: white;
+    border:0px;
+    cursor:pointer;
+}
+
+.add-comment:hover{
+    cursor:pointer;
+}
+
+h4{
+    margin:0;
+}
+
+.checkmark{
+    width: 25px;
+    height: 25px;
+    display:flex;
+}
+
+.checkmark-btn{
+    background-color: white;
+    border:0px;
+    cursor:pointer;
+}
+
+.addfile-btn{
+    background-color: white;
+    border:0px;
+    cursor:pointer;
+}
+
+.add-file{
+    width: 25px;
+    height: 25px;
+    display:flex;
+}
