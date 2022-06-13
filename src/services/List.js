@@ -15,7 +15,6 @@ function List(){
   const [id, setId] = useServiceId('')
   const list = useFetch('http://127.0.0.1:3000/service/list')
   const users = useFetch('http://127.0.0.1:3000/service/users')
-  console.log(id)
     return (
       <Fragment>
           <div id="service-list">
@@ -28,7 +27,7 @@ function List(){
                       <label>Description: </label> <span className="resp-bd">{lis.description}</span>
                       <label>Comments: </label> <span className="resp-bd">{!lis.comments ? 'There is not data' : lis.comments}</span>
                       <label>Files: </label> <span className="resp-bd">{!lis.file && 'There is not data'} </span>
-                      {token && <button className="comment-btn"onClick={()=>setId(lis.id)}><img className="add-comment" src={comentario} alt='add-comment' onClick={() => setModal(<AddComments />)}/></button>}
+                      {token && <button className="comment-btn" onClick={()=>setId(lis.id)}><img className="add-comment" src={comentario} alt='add-comment' onClick={() => setModal(<AddComments />)}/></button>}
                       {token && <button className="checkmark-btn"><img className="checkmark" src={checkmark} alt='checkmark-btn' /></button>}
                       {token && <button className="addfile-btn"><img className="add-file" src={addfile} alt='add-btn' /></button>}
                   </span>)}
