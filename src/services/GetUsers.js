@@ -12,7 +12,6 @@ function GetUsers() {
         </ul>)}
     </div>
   )
-
 }
 
 export default GetUsers;
