@@ -18,6 +18,7 @@ export default function AddMultiComments() {
   return (
     <div className='comments-container'>
       <div className='container'>
+        <h1>Leave a comment</h1>
         <ul className='ul-container'>
           {list.map((i) => (
             <li className='add-storage' key={i.length}>
@@ -26,17 +27,14 @@ export default function AddMultiComments() {
             </li>
           ))}
         </ul>
+
         <input
           className='comment-input'
-          placeholder='your commment'
+          placeholder='Write your commment here...'
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
         />
-        <span>
-          <button className='comment-btn' onClick={handleAdd}>
-            Add
-          </button>
-        </span>
+        <input className='comment-btn' onClick={handleAdd} value='add' />
       </div>
     </div>
   );
