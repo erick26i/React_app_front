@@ -14,7 +14,7 @@ import { useFile } from '../Context/FileContext'
 
 function List(){
   const [token] = useToken()
-  const [, setFile] = useFile('')
+  const [, setFile] = useFile()
   const [, setModal] = useModal('')
   const [, setId] = useServiceId('')
   const list = useFetch('http://127.0.0.1:3000/service/list')
@@ -29,7 +29,7 @@ function List(){
                       <label>Title: </label> <span className="resp-bd">{lis.title}</span>
                       <label>Description: </label> <span className="resp-bd">{lis.description}</span>
                       <label>Comments: </label> <span className="resp-bd">{!lis.comments ? 'There is not data' : lis.comments}</span>
-                      <label>Files: </label> <span className="resp-bd"><FileState/> </span>
+                      <label>Files: </label> <span className="resp-bd">{<FileState/>} </span>
                     {token && 
                         <img className="add-comment" src={comentario} 
                           onClick={()=> {

@@ -31,7 +31,7 @@ function Login() {
     } catch (e) {
       setStatus('error');
     }
-  };
+  }
   if (token) {
     return <Navigate to='/' />;
   }

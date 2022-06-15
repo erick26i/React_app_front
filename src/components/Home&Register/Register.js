@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import { useModal } from '../../Context/ModalContext';
 import { useToken } from '../../Context/TokenContext';
 import { useUser } from '../../Context/UserContext';
 import Login from '../Login/Login';
 import './Register.css';
 import logo from '../../img/logo_hab.jpg';
+import { Navigate } from 'react-router-dom';
 
 function Register() {
   const [username, setUser] = useUser('');
@@ -36,16 +36,16 @@ function Register() {
       if (!res.ok) throw new Error(res.statusText);
       const data = await res.json();
       setStatus('success');
-      setModal(null);
       setToken(data.data);
     } catch (e) {
-      console.warn(e);
       setStatus('error');
     }
-  };
-
-  if (token) {
-    return <Navigate to='/login' />;
+    setTimeout(() => {
+      setModal(null)
+  }, 2000);
+  }
+  if(token){
+    return <Navigate to="/"/>
   }
 
   return (
@@ -55,10 +55,10 @@ function Register() {
         <img className='logo' src={logo} alt='logo' />
         <label>
           <span className='label'>Username</span>
-          <input
+          <input 
             placeholder='Username'
             required
-            value={username}
+            value={username || ''}
             onChange={(e) => setUser(e.target.value)}
           />
         </label>
