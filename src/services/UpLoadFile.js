@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { useModal } from "../Context/ModalContext"
 import { useToken } from "../Context/TokenContext"
 
 export default function UpLoadFile(){
     const [file, setFile] = useState(null)
     const [status, setStatus] = useState('')
     const [token] = useToken()
+    const [, setModal] = useModal()
 
     const sendHandler = async e=>{
     e.preventDefault();
@@ -29,10 +31,11 @@ export default function UpLoadFile(){
         if(status === 'success'){
             
         }
-    document.getElementById('fileinput').reset()
-    setFile(null)
-    setStatus('')
-
+        document.getElementById('fileinput').reset()
+        setFile(null)
+        setTimeout(() => {
+            setModal(null)
+        }, 2000);
     }
     return (
         <form id="fileinput" onSubmit={sendHandler}>

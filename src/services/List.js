@@ -9,6 +9,7 @@ import './list.css'
 import { useServiceId } from "../Context/IdContext"
 import AddComments from './AddComments'
 import AddMultiComments from './AddMultiComments'
+import UpLoadFile from './UpLoadFile'
 
 function List(){
   const [token] = useToken()
@@ -32,8 +33,8 @@ function List(){
                     {token && 
                         <img className="add-comment" src={comentario} 
                           onClick={()=> {
-                          setId(lis.id)
-                          setModal(<AddMultiComments />)}} 
+                            setId(lis.id)
+                            setModal(<AddMultiComments />)}} 
                           alt='add-comment'/>}
                     {token && 
                         <img className="checkmark" src={checkmark} 
@@ -41,8 +42,10 @@ function List(){
                         alt='checkmark-btn' />}
                     {token && 
                         <img className="add-file" src={addfile} 
-                        onClick={()=>setId(lis.id)}
-                        alt='add-btn' />}
+                         onClick={()=>{
+                            setId(lis.id)
+                            setModal(<UpLoadFile />)}} 
+                         alt='add-btn' />}
                   </span>)}
                 
         </Fragment>

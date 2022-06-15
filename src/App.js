@@ -20,7 +20,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/service/list' element={<List />} />
         <Route path='/service/add' element={<CreateService />} />  
-        <Route path='/service/user/upimg' element={<UpLoadFile/>}/>      
+        <Route path='/service/user/upfile' element={<UpLoadFile/>}/>      
       </Routes>
       {modal && <Modal>{modal}</Modal>}
     </div>
