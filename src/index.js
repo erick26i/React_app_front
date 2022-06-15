@@ -8,22 +8,25 @@ import { BrowserRouter } from 'react-router-dom';
 import { DarkModeProvider } from './Context/DarkModeContext';
 import { ModalProvider } from './Context/ModalContext';
 import { ServiceIdProvider } from './Context/IdContext';
+import { FileProvider } from './Context/FileContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ServiceIdProvider>
-      <ModalProvider>
-        <DarkModeProvider>
-          <UserProvider>
-            <TokenProvider>
-              <BrowserRouter>
-                <App />
-              </BrowserRouter>
-            </TokenProvider>
-          </UserProvider>
-        </DarkModeProvider>
-      </ModalProvider>
-    </ServiceIdProvider>
+    <FileProvider>
+      <ServiceIdProvider>
+        <ModalProvider>
+          <DarkModeProvider>
+            <UserProvider>
+              <TokenProvider>
+                <BrowserRouter>
+                  <App />
+                </BrowserRouter>
+              </TokenProvider>
+            </UserProvider>
+          </DarkModeProvider>
+        </ModalProvider>
+      </ServiceIdProvider>
+    </FileProvider>
   </React.StrictMode>
 )

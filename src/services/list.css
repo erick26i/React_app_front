@@ -32,7 +32,7 @@ label{
     cursor:pointer;
 }
 
-.add-comment:hover{
+.add-comment, .checkmark, .add-file:hover{
     cursor:pointer;
 }
 

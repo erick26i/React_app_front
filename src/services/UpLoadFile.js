@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useServiceId } from "../Context/IdContext"
 import { useModal } from "../Context/ModalContext"
 import { useToken } from "../Context/TokenContext"
 
@@ -7,17 +8,17 @@ export default function UpLoadFile(){
     const [status, setStatus] = useState('')
     const [token] = useToken()
     const [, setModal] = useModal()
-
+    const [id] = useServiceId('')
+    
     const sendHandler = async e=>{
     e.preventDefault();
-
         if(file){
             const formatdata = new FormData()
             formatdata.append('file', file)
-            await fetch('http://localhost:3000/service/user/upfile',{
+            await fetch(`http://localhost:3000/service/${id}/upfile`,{
             method: 'POST',
-            headers: { 'Authorization': 'Bearer ' + token },
-            body: formatdata
+            headers: { 'Authorization': token },
+            body: formatdata    
             })
             .then(res=>res.text())
             .then(res=>console.log(res))
