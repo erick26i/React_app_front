@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useToken } from '../Context/TokenContext';
+import imagen from '../img/service_bg2.svg';
 import './createService.css';
 
 function CreateService() {
@@ -30,35 +31,38 @@ function CreateService() {
 
   return (
     <aside className='aside'>
-      <img src='./img/bus.jpg' alt='img' />
+      <img src={imagen} alt='img' className='service-bg' />
       <form id='create-service' onSubmit={handleSubmit}>
         <label>
-          <span>Title:</span>
+          <span className='service-title'>Title:</span>
           <input
+            className='service-input'
             name='title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
         <label>
-          <span>Description:</span>
+          <span className='service-title'>Description:</span>
           <input
+            className='service-input'
             name='description'
             type='text'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </label>
-        <label>
+        <label className='service-title'>
           <span>Comments:</span>
           <input
+            className='service-input'
             name='comments'
             type='text'
             value={comments}
             onChange={(e) => setComments(e.target.value)}
           />
         </label>
-        <button>Create Service</button>
+        <button className='service-btn'>Create Service</button>
         {error ? <h3 className='error-message'>{error}</h3> : null}
         {status ? (
           <p className='service-create'>Congratulations! Service Created!</p>
