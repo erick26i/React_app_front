@@ -1,0 +1,16 @@
+.aside {
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+#create-service {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

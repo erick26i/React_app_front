@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useToken } from '../Context/TokenContext';
+import './createService.css';
 
 function CreateService() {
-  const [token] = useToken()
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [comments, setComments] = useState('')
-  const [error, setError] = useState('')
-  const [status, setStatus] = useState('')
+  const [token] = useToken();
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [comments, setComments] = useState('');
+  const [error, setError] = useState('');
+  const [status, setStatus] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,16 +20,17 @@ function CreateService() {
           Authorization: token,
         },
         body: JSON.stringify({ title, description }),
-      })
-      setStatus('success')
+      });
+      setStatus('success');
     } catch (e) {
-      setError('error')
+      setError('error');
       console.warn(e);
     }
-  }
+  };
 
   return (
-    <aside>
+    <aside className='aside'>
+      <img src='./img/bus.jpg' alt='img' />
       <form id='create-service' onSubmit={handleSubmit}>
         <label>
           <span>Title:</span>
@@ -59,13 +61,11 @@ function CreateService() {
         <button>Create Service</button>
         {error ? <h3 className='error-message'>{error}</h3> : null}
         {status ? (
-          <p className='service-create'>
-            Congratulations! Service Created!
-          </p>
+          <p className='service-create'>Congratulations! Service Created!</p>
         ) : null}
       </form>
     </aside>
-  )
+  );
 }
 
 export default CreateService;

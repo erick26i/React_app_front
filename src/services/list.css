@@ -1,65 +1,69 @@
-#cont{
-    display: block;
-    float: left;
-    margin: 0 0 3% 3%;
-    padding: 2%;
-    flex-wrap: wrap;
-    border: 2px solid black;
-    width: 200px;
-    height: 200px;
-    border-radius: 2px;
-    box-shadow: 3px 4px rgb(145, 145, 145);
+#cont {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  margin: 0 0 3% 3%;
+  padding: 2%;
+  border: 0.5px solid black;
+  border-radius: 2px;
 }
 
-label{
-    color: red;
+label {
+  color: red;
+  margin-bottom: 10px;
 }
 
-.resp-bd{
-    color: blue;
-
+.resp-bd {
+  color: rgb(59, 57, 57);
+  border-bottom: 1px solid rgb(59, 57, 57);
+  font-size: 1rem;
 }
 
-.add-comment{
-    width: 25px;
-    height: 25px;
-    display:flex;
+.add-comment {
+  width: 25px;
+  height: 25px;
+  display: flex;
 }
 
-.comment-btn{
-    background-color: white;
-    border:0px;
-    cursor:pointer;
+.comment-btn {
+  background-color: white;
+  border: 0px;
+  cursor: pointer;
 }
 
-.add-comment:hover{
-    cursor:pointer;
+.add-comment:hover {
+  cursor: pointer;
 }
 
-h4{
-    margin:0;
+h4 {
+  margin: 0;
 }
 
-.checkmark{
-    width: 25px;
-    height: 25px;
-    display:flex;
+.checkmark {
+  width: 25px;
+  height: 25px;
+  display: flex;
 }
 
-.checkmark-btn{
-    background-color: white;
-    border:0px;
-    cursor:pointer;
+.checkmark-btn {
+  background-color: white;
+  border: 0px;
 }
 
-.addfile-btn{
-    background-color: white;
-    border:0px;
-    cursor:pointer;
+.addfile-btn {
+  background-color: white;
+  border: 0px;
 }
 
-.add-file{
-    width: 25px;
-    height: 25px;
-    display:flex;
+.add-file {
+  width: 25px;
+  height: 25px;
+  display: flex;
+}
+
+.buttons-service {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 20px;
+  cursor: pointer;
 }
