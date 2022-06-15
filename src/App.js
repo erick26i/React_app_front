@@ -7,6 +7,7 @@ import List from './services/List'
 import CreateService from './services/CreateService'
 import Modal from './components/Modal/Modal'
 import './App.css'
+import UpImg from './services/UpImg'
 
 function App() {
   const [modal] = useModal()
@@ -18,7 +19,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/service/list' element={<List />} />
-        <Route path='/service/add' element={<CreateService />} />        
+        <Route path='/service/add' element={<CreateService />} />  
+        <Route path='/service/user/upimg' element={<UpImg/>}/>      
       </Routes>
       {modal && <Modal>{modal}</Modal>}
     </div>
