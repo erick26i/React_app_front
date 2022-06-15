@@ -1,0 +1,27 @@
+#upload-file {
+  display: none;
+}
+
+.upload-btn {
+  width: 200px;
+  height: 40px;
+  outline: none;
+  border: none;
+  background-color: #003;
+  color: #fff;
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+.upload-file-label {
+  padding: 20px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  background-color: #003;
+  margin-bottom: 20px;
+}
+div p {
+  font-size: 1.5rem;
+  font-weight: 700;
+}

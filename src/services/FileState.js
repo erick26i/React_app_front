@@ -1,11 +1,7 @@
-import { useFile } from "../Context/FileContext"
+import { useFile } from '../Context/FileContext';
 
-export default function FileState(){
-    const [file] = useFile()
+export default function FileState() {
+  const [file] = useFile();
 
-    return(
-        <div>
-            {file}        
-        </div>
-    )
+  return <div>{file}</div>;
 }

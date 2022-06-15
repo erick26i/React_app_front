@@ -1,0 +1,76 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  margin-top: 200px;
+  /* background-color: red; */
+}
+
+#create-service {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.service-title {
+  font-size: 0.9rem;
+  color: rgb(11, 2, 14);
+}
+
+.service-bg {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.service-input {
+  padding: 15px;
+  float: right;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+.service-input:hover {
+  border: 2px solid rgb(42, 172, 10);
+}
+
+.service-btn {
+  appearance: button;
+  background-color: rgb(42, 172, 10);
+  border: 1px solid rgb(42, 172, 10);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.15;
+  overflow: visible;
+  padding: 12px 16px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: all 80ms ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.service-btn:disabled {
+  opacity: 0.5;
+}
+
+.service-btn:focus {
+  outline: 0;
+}
+
+.service-btn:hover {
+  background-color: rgb(33, 135, 7);
+  border-color: rgb(33, 135, 7);
+}
+
+.service-btn:active {
+  background-color: rgb(23, 93, 5);
+  border-color: rgb(23, 93, 5);
+}
