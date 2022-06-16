@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom"
 import { useModal } from "../../Context/ModalContext"
 import { useToken } from "../../Context/TokenContext"
-import Profile from '../Profile/Profile'
 import Login from '../Login/Login'
 import profileImg from '../../img/user.png'
+import ProfileHeader from "../Profile/ProfileHeader"
 import './Header.css'
 
 function Header() {
@@ -18,7 +18,7 @@ function Header() {
         {token && <NavLink to="/service/add">Create Service</NavLink>}
       </div>
         {!token && <img className="profileImg" src={profileImg} alt='profile' onClick={() => setModal(<Login/>)}/>}
-        {token && <Profile/>}
+        {token && <ProfileHeader/>}
     </header>
   )
 }
