@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   /* text-align: center; */
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .main-container {
@@ -85,4 +85,9 @@
 .service-btn:active {
   background-color: rgb(23, 93, 5);
   border-color: rgb(23, 93, 5);
+}
+
+.service-create {
+  font-size: 1rem;
+  text-align: center;
 }
