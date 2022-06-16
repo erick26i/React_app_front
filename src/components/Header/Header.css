@@ -67,7 +67,7 @@
 }
 
 .li-menu {
-  padding: 20px;
+  padding: 10px;
 }
 
 #profile:hover .menu {
@@ -77,6 +77,6 @@
 
 .li-menu:hover {
   background-color: rgb(42, 172, 10);
-  font-size: 120%;
+  /* font-size: 100%; */
   color: white;
 }

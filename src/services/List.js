@@ -24,93 +24,97 @@ function List() {
   const [, setId] = useServiceId('');
   const list = useFetch('http://127.0.0.1:3000/service/list');
   const users = useFetch('http://127.0.0.1:3000/service/users');
+
   return (
     <>
+      {/* MAIN TITLE */}
       <div id='service-list'>
         <h2>
           <img src={serviceLogo} alt='logo' className='service-logo' />
           Servicios Disponibles
         </h2>
-        {list?.map((lis) => (
-          <span id='cont' key={lis.id}>
-            {/* USER RENDER */}
-            <h4>
-              {users?.map((u) => (
-                <aside key={u.id}>
-                  <img id='avatar' src={avatarSvg} alt='user_avatar' />
-                  {u.id === lis.userId && u.username}
-                </aside>
-              ))}
-            </h4>
-            <div>
+      </div>
+      <div className='list-container'>
+        <div className='list-key'>
+          {list?.map((lis) => (
+            <span id='cont' key={lis.id}>
+              {/* USER RENDER */}
+              <h4>
+                {users?.map((u) => (
+                  <aside key={u.id}>
+                    <img id='avatar' src={avatarSvg} alt='avatar_img' />
+                    {u.id === lis.userId && u.username}
+                  </aside>
+                ))}
+              </h4>
               {/* TITEL RENDER */}
-              <label>Title: </label>{' '}
-              <span className='resp-bd'>{lis.title}</span>
+              <label>Title: </label>
+              <span className='resp-bd '>{lis.title}</span>
               {/* DESCRIPTION RENDER */}
               <label>Description: </label>{' '}
-              <span className='resp-bd'>{lis.description}</span>
+              <span className='resp-bd '>{lis.description}</span>
               {/* COMMENTS RENDER */}
               <label>Comments: </label>{' '}
-              <span className='resp-bd'>
+              <span className='resp-bd '>
                 {!lis.comments ? 'There is not data' : lis.comments}
               </span>
               {/* FILE RENDER */}
               <label>Files: </label>{' '}
-              <span className='resp-bd'>
-                {!lis.file ? 'There is not data' : lis.file}{' '}
+              <span className='resp-bd '>
+                {!lis.file && 'There is not data'}{' '}
               </span>
-              {lis.complete === 1 && <label>Completed</label>}
-            </div>
-            {/* BUTTONS */}
-            <div className='buttons-service'>
-              {token && (
-                <img
-                  className='message'
-                  src={comentario}
-                  onClick={() => {
-                    setId(lis.id);
-                    setModal(<AddComments />);
-                  }}
-                  alt='add-comment'
-                />
-              )}
-              {token && (
-                <img
-                  className='checkmark'
-                  src={checkmark}
-                  onClick={() => {
-                    setId(lis.id);
-                    setModal(<CompleteWork />);
-                  }}
-                  alt='checkmark-btn'
-                />
-              )}
-              {token && (
-                <img
-                  className='add-file'
-                  src={upload}
-                  onClick={() => {
-                    setId(lis.id);
-                    setModal(<UpLoadFile />);
-                  }}
-                  alt='add-btn'
-                />
-              )}
-              {token && (
-                <img
-                  id='avatar'
-                  className='del-btn'
-                  src={close}
-                  alt='close'
-                  onClick={() => {
-                    setId(lis.id);
-                    setModal(<DeleteService />);
-                  }}
-                />
-              )}
-            </div>
-          </span>
-        ))}
+              {/* BUTTONS */}
+              <div className='buttons-service'>
+                {token && (
+                  <img
+                    className='message'
+                    src={comentario}
+                    onClick={() => {
+                      setId(lis.id);
+                      setModal(<AddComments />);
+                    }}
+                    alt='add-comment'
+                  />
+                )}
+                {token && (
+                  <img
+                    className='checkmark'
+                    src={checkmark}
+                    onClick={() => {
+                      setId(lis.id);
+                      setModal(<CompleteWork />);
+                    }}
+                    alt='checkmark-btn'
+                  />
+                )}
+                {token && (
+                  <img
+                    className='add-file'
+                    src={upload}
+                    onClick={() => {
+                      setId(lis.id);
+                      setModal(<UpLoadFile />);
+                    }}
+                    alt='add-btn'
+                  />
+                )}
+                {token && (
+                  <span>
+                    <img
+                      className='del-btn'
+                      src={close}
+                      onClick={() => {
+                        setId(lis.id);
+                        setModal(<DeleteService />);
+                      }}
+                      alt='add-btn'
+                    />
+                  </span>
+                )}
+              </div>
+            </span>
+          ))}
+        </div>
       </div>
     </>
   );

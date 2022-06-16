@@ -44,9 +44,17 @@ h4 {
   width: 25px;
   height: 25px;
   display: flex;
+  margin: 5px;
   color: white;
   background-color: aliceblue;
   padding: 0.8rem;
+}
+
+.checkmark:hover,
+.add-file:hover,
+.message:hover,
+.del-btn:hover {
+  background-color: rgb(114, 121, 128);
 }
 .service-logo {
   width: 30px;
