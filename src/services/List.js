@@ -41,7 +41,7 @@ function List() {
               {/* USER RENDER */}
               <h4>
                 {users?.map((u) => (
-                  <aside key={u.id}>
+                  <aside key={u.id} className='user-container'>
                     <img id='avatar' src={avatarSvg} alt='avatar_img' />
                     {u.id === lis.userId && u.username}
                   </aside>
