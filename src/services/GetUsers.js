@@ -2,7 +2,6 @@ import useFetch from '../hooks/useFetch';
 
 function GetUsers() {
   const users = useFetch('http://127.0.0.1:3000/service/users')
-  console.log(users)
   return (
     <div>
       {users?.map(u=>

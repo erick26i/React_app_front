@@ -7,8 +7,11 @@ import List from './services/List'
 import CreateService from './services/CreateService'
 import Modal from './components/Modal/Modal'
 import './App.css'
+import { useToken } from './Context/TokenContext'
+import Error404 from './components/Misc/Error404'
 
 function App() {
+  const [token] = useToken()
   const [modal] = useModal()
   const [darkMode] = useDarkMode()
 
@@ -18,7 +21,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/service/list' element={<List />} />
-        <Route path='/service/add' element={<CreateService />} />  
+        <Route path='*' element={<Error404/>}/>
+        {token && <Route path='/service/add' element={<CreateService />} />}
       </Routes>
       {modal && <Modal>{modal}</Modal>}
     </div>

@@ -1,25 +1,22 @@
-import { useState } from "react"
 import { useServiceId } from "../Context/IdContext"
 import { useModal } from "../Context/ModalContext"
 import { useToken } from "../Context/TokenContext"
-import './AddComments.css'
 
-function AddComments(){
+export default function CompleteWork(){
     const [token] = useToken()
     const [id] = useServiceId()
-    const [comments, setComments] = useState()
     const [, setModal] = useModal()
 
     const handleSubmit = async e => {
     e.preventDefault()
     try {
-    await fetch(`http://127.0.0.1:3000/service/${id}/add`, {
+    await fetch(`http://127.0.0.1:3000/service/${id}`, {
         method: 'PATCH',
         headers: { 
             'Content-Type': 'application/json',
             'Authorization': token 
         },
-        body: JSON.stringify({ id, comments })
+        body: JSON.stringify({ id })
     })
       return setModal(null)
     } catch (e) {
@@ -28,17 +25,12 @@ function AddComments(){
   }
 
    return (
-    <aside>
-      <form id="add-comment" onSubmit={handleSubmit}>
-        <label>
-          <span>New Comment:</span>
-          <textarea name="comments" value={comments} onChange={e => setComments(e.target.value)}/>
-          </label>
-        <button>Add Comments</button>
-    </form>
-    </aside>
+    <div>
+        <form onSubmit={handleSubmit}>
+            <span>are you sure to complete service?</span>
+            <button>Accept</button>
+        </form>
+        <button onClick={()=>setModal(null)}>Cancel</button>
+    </div>
   )
 }
-
-
-export default AddComments

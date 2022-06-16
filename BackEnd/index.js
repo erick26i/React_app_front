@@ -8,14 +8,14 @@ const multer = require('multer')
 
 const {
     isAuthenticated,
-    serviceExists
 } = require('./middleware/middleware')
 
 const {
     createService,
     markAsComplete,
     getServices,
-    newTask
+    deleteService,
+    completedService
 } = require('./Repositories/services')
 
 const {
@@ -52,7 +52,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // USUARIOS ANONIMOS
 //Lista de servicios
-app.get('/service/list', getServices)
+app.get('/service/list', completedService, getServices)
 
 // Hacemos login
 app.post('/login', login)
@@ -64,17 +64,17 @@ app.post('/register', register)
 // Añado servicios a la base de datos, comprobando si el usuario esta autenticado.
 app.post('/service/add', isAuthenticated, createService)
 
+// Eliminamos servicio
+app.delete('/service/:id/delete', isAuthenticated, deleteService)
+
 // Obtencion de usuarios registrados
 app.get('/service/users', getUsers)
 
 // Añado comentarios
-app.patch('/service/user/task', isAuthenticated, addComment)
-
-//Añado nueva tarea
-app.post('/service/:id/user', newTask)
+app.patch('/service/:id/add', isAuthenticated, addComment)
 
 // Marcar servicio como resuelto
-app.patch('/services/:id', serviceExists, isAuthenticated, markAsComplete)
+app.patch('/service/:id', isAuthenticated, markAsComplete)
 
 //Upload File & Img
 app.post('/service/:id/upfile', isAuthenticated, upLoad.single('file'), uploadFile)

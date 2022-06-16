@@ -4,17 +4,15 @@ import comentario from '../img/comentario.png'
 import checkmark from '../img/controlar.png'
 import { useModal } from '../Context/ModalContext'
 import addfile from '../img/agregar.png'
-import './list.css'
 import { useServiceId } from "../Context/IdContext"
 import AddComments from './AddComments'
-import AddMultiComments from './AddMultiComments'
 import UpLoadFile from './UpLoadFile'
-import FileState from './FileState'
-import { useFile } from '../Context/FileContext'
+import './list.css'
+import CompleteWork from './CompleteWork'
+import DeleteService from './DeleteService'
 
 function List(){
   const [token] = useToken()
-  const [, setFile] = useFile()
   const [, setModal] = useModal('')
   const [, setId] = useServiceId('')
   const list = useFetch('http://127.0.0.1:3000/service/list')
@@ -26,31 +24,38 @@ function List(){
                 {list?.map(lis => 
                   <span id="cont" key={lis.id}>
                       <h4>{users?.map(u=><aside key={u.id}>{u.id === lis.userId && u.username}</aside>)}</h4>
+                      <div>
                       <label>Title: </label> <span className="resp-bd">{lis.title}</span>
                       <label>Description: </label> <span className="resp-bd">{lis.description}</span>
                       <label>Comments: </label> <span className="resp-bd">{!lis.comments ? 'There is not data' : lis.comments}</span>
-                      <label>Files: </label> <span className="resp-bd">{<FileState/>} </span>
+                      <label>Files: </label> <span className="resp-bd">{!lis.file ? 'There is not data' : lis.file} </span>
+                      {lis.complete === 1 && <label>Completed</label>}</div>
                     {token && 
                         <img className="add-comment" src={comentario} 
                           onClick={()=> {
                             setId(lis.id)
-                            setModal(<AddMultiComments />)}} 
+                            setModal(<AddComments/>)}} 
                           alt='add-comment'/>}
                     {token && 
                         <img className="checkmark" src={checkmark} 
-                        onClick={()=>setId(lis.id)}
+                        onClick={()=>{setId(lis.id)
+                                  setModal(<CompleteWork/>)}}
                         alt='checkmark-btn' />}
                     {token && 
                         <img className="add-file" src={addfile} 
                          onClick={()=>{
                             setId(lis.id)
-                            setModal(<UpLoadFile />)
-                            setFile(lis.file)}}
+                            setModal(<UpLoadFile />)}}
                          alt='add-btn' />}
+                    {token && 
+                        <span className='del-btn'
+                         onClick={()=>{
+                            setId(lis.id)
+                            setModal(<DeleteService />)}}
+                         alt='del-btn'>X</span>}
                   </span>)}
             </div>
-
-                  </>
+      </>
   )
  }
 

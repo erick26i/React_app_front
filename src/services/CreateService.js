@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { useToken } from '../Context/TokenContext';
-
+import { useState } from 'react'
+import { useToken } from '../Context/TokenContext'
+import { useUser } from '../Context/UserContext'
 function CreateService() {
   const [token] = useToken()
+  const [username] = useUser()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [comments, setComments] = useState('')
@@ -12,18 +13,17 @@ function CreateService() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://127.0.0.1:3000/service/add', {
+      await fetch('http://127.0.0.1:3000/service/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: token,
         },
-        body: JSON.stringify({ title, description }),
+        body: JSON.stringify({ title, description, comments, username }),
       })
       setStatus('success')
     } catch (e) {
       setError('error')
-      console.warn(e);
     }
   }
 

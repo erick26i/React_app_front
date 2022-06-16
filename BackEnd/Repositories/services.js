@@ -20,7 +20,7 @@ const getServices = async (req, res) => {
 const createService = async (req, res) => {
 
         const connection = await db.getConnection()
-        const {title, description} = req.body
+        const {title, description, comments} = req.body
         
         if(!title || !description){
             res.status(403).send("[ERROR] el servicio no esta creado, rellene los campos necesarios e intentelo de nuevo")
@@ -28,11 +28,16 @@ const createService = async (req, res) => {
         }
     // Extraemos el id del usuario que crea el servicio.
         const userId = req.appInfo.id
-    
+
     // Insertamos en DB los servicios creados por el usuario.
-        const sqlCreateService = `insert into services (title, description, userId) 
-        values ("${title}","${description}", ${userId})`
+        const sqlCreateService = `insert into services (title, description, comments, userId) 
+        values ("${title}","${description}", "${comments}", ${userId})`
         await connection.query(sqlCreateService)
+
+        const sqlServiceId = `select id from services where userId=${userId} order by id desc limit 1;`
+        const bdRes = await connection.query(sqlServiceId)
+        const sqlAux = `INSERT INTO aux (id_user, id_service) values (${userId},${bdRes[0][0].id})`
+        await connection.query(sqlAux)
         res.status(200).send("[EXITO] Servicio creado correctamente")
         connection.release()
 }
@@ -40,31 +45,33 @@ const createService = async (req, res) => {
 const markAsComplete = async (req, res) => {
     const connection = await db.getConnection()
     const idService = req.params.id
-    let sql = `UPDATE completework set complete=true where id_service=${idService}`
+    let sql = `UPDATE services set complete=true where id=${idService}`
     await connection.query(sql)
     res.status(200).send("[EXITO] Servicio completado !!")
     connection.release()
-
 }
 
-const newTask = async (req, res) => {
-    
-     const connection = await db.getConnection()
-     const {username} = req.body
-     const serviceId = req.params.id 
-     const getUsername = `select id from users where username='${username}'`
-     const userId = await connection.query(getUsername)    
-     const sqlInsertTask = `INSERT INTO completework (id_user, id_service) values (${userId[0][0].id}, ${serviceId})`
-     await connection.query(sqlInsertTask)
- 
-     res.status(200).send(`[EXITO] Nueva tarea añadida al usuario: ${username}`)
-     connection.release()
-
+const completedService = async (req, res, next)=>{
+    const connection = await db.getConnection()
+    const sql = `select * from services where complete=true`
+    await connection.query(sql)
+    next()
 }
 
+const deleteService = async (req, res)=>{
+    const connection = await db.getConnection()
+    const idService = req.params.id
+    const sql = `DELETE FROM aux where id_service=${idService}`
+    const sql2 = `DELETE FROM services where id=${idService}`
+    await connection.query(sql)
+    await connection.query(sql2)
+    res.status(200).send("[EXITO] Servicio eliminado !!")
+    connection.release()
+}
 module.exports = {
     createService,
     getServices,
     markAsComplete,
-    newTask
+    deleteService,
+    completedService
 } 

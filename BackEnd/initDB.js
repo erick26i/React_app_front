@@ -10,7 +10,7 @@ async function main() {
     connection = await getConnection();
 
     // Borramos BD si existe
-    console.log("Borramos BD si existe");
+    console.log('Borramos BD, "si existe"');
     await connection.query(`DROP DATABASE proyecto`);
 
     // Creamos Base de datos y seleccionamos
@@ -20,12 +20,10 @@ async function main() {
 
     // Borrar las tablas si existen (diary, diary_votes)
     console.log("Borrando tablas");
-    await connection.query("DROP TABLE IF EXISTS completework");
+    await connection.query("DROP TABLE IF EXISTS aux");
     await connection.query("DROP TABLE IF EXISTS services");
     await connection.query("DROP TABLE IF EXISTS users")
     
-    
-
     // Crear las tablas de nuevo
     console.log("Creando tablas");
 
@@ -47,23 +45,21 @@ async function main() {
         description VARCHAR(300) NOT NULL,
         file VARCHAR(1000),
         comments VARCHAR(300),
+        complete BOOLEAN default false,
         userId INTEGER NOT NULL,
         foreign key (userId) references users(id)
       );
     `);
 
     await connection.query(`
-      CREATE TABLE completework(
+      CREATE TABLE aux(
         id INTEGER unsigned PRIMARY KEY AUTO_INCREMENT NOT NULL,
         id_user INTEGER NOT NULL,
         id_service INTEGER NOT NULL,
-        complete BOOLEAN default false,
         foreign key (id_user) references users(id),
         foreign key (id_service) references services(id)
     );
     `);
-
-
     // Meter datos de prueba en las tablas
 
   } catch (error) {
