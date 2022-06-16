@@ -1,6 +1,6 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const { getConnection } = require("./db");
+const { getConnection } = require('./db');
 
 let connection;
 
@@ -14,18 +14,18 @@ async function main() {
     await connection.query(`DROP DATABASE proyecto`);
 
     // Creamos Base de datos y seleccionamos
-    console.log("Creamos DB")
+    console.log('Creamos DB');
     await connection.query(`CREATE DATABASE proyecto`);
     await connection.query(`USE proyecto`);
 
     // Borrar las tablas si existen (diary, diary_votes)
-    console.log("Borrando tablas");
-    await connection.query("DROP TABLE IF EXISTS aux");
-    await connection.query("DROP TABLE IF EXISTS services");
-    await connection.query("DROP TABLE IF EXISTS users")
-    
+    console.log('Borrando tablas');
+    await connection.query('DROP TABLE IF EXISTS aux');
+    await connection.query('DROP TABLE IF EXISTS services');
+    await connection.query('DROP TABLE IF EXISTS users');
+
     // Crear las tablas de nuevo
-    console.log("Creando tablas");
+    console.log('Creando tablas');
 
     await connection.query(`
       CREATE TABLE users (
@@ -61,11 +61,11 @@ async function main() {
     );
     `);
     // Meter datos de prueba en las tablas
-
+    connection.release();
   } catch (error) {
     console.error(error);
   } finally {
-    console.log("Todo hecho, liberando conexión");
+    console.log('Todo hecho, liberando conexión');
     if (connection) connection.release();
     process.exit();
   }

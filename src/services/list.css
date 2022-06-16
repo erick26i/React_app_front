@@ -1,64 +1,83 @@
-#cont{
-    display: block;
-    float: left;
-    margin: 0 0 3% 3%;
-    padding: 2%;
-    flex-wrap: wrap;
-    border: 2px solid black;
-    width: 200px;
-    height: 200px;
-    border-radius: 2px;
-    box-shadow: 3px 4px rgb(145, 145, 145);
+.list-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  margin-top: 50px;
+  /* background-color: red; */
 }
 
-label{
-    color: red;
+#cont {
+  background-color: rgb(39, 39, 47);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  float: left;
+  margin: 0 0 3% 3%;
+  padding: 2%;
+  border: 0.5px solid black;
+  border-radius: 10px;
+  min-width: 200px;
+  color: white;
 }
 
-.resp-bd{
-    color: blue;
+label {
+  color: rgb(159, 158, 158);
 }
 
-.add-comment{
-    width: 25px;
-    height: 25px;
-    display:flex;
+.resp-bd {
+  color: rgb(243, 239, 215);
+  font-size: 1rem;
+  padding-bottom: 10px;
 }
 
-.comment-btn{
-    background-color: white;
-    border:0px;
-    cursor:pointer;
+h4 {
+  margin: 0;
 }
 
-.add-comment, .checkmark, .add-file, .del-btn:hover{
-    cursor:pointer;
+.checkmark,
+.add-file,
+.message,
+.del-btn {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  color: white;
+  background-color: aliceblue;
+  padding: 0.8rem;
+}
+.service-logo {
+  width: 30px;
+  color: white;
+  margin-right: 30px;
 }
 
-h4{
-    margin:0;
+.addfile-btn {
+  background-color: white;
+  border: 0px;
 }
 
-.checkmark{
-    width: 25px;
-    height: 25px;
-    display:flex;
+.add-file {
+  width: 25px;
+  height: 25px;
+  display: flex;
 }
 
-.checkmark-btn{
-    background-color: white;
-    border:0px;
-    cursor:pointer;
+.buttons-service {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  /* margin: 20px 20px; */
+  cursor: pointer;
 }
 
-.addfile-btn{
-    background-color: white;
-    border:0px;
-    cursor:pointer;
-}
-
-.add-file{
-    width: 25px;
-    height: 25px;
-    display:flex;
+#avatar {
+  background-color: white;
+  margin-right: 20px;
+  border-radius: 100%;
+  padding: 5px;
+  width: 20px;
+  margin-bottom: 5px;
 }
