@@ -1,0 +1,91 @@
+.home-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 100vh; */
+  /* background-color: red; */
+}
+
+.home-container .text-box {
+  margin-top: 150px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+}
+.home-img {
+  width: 400px;
+}
+
+.home-container .text-box h1 {
+  font-size: 10em;
+  line-height: 1.4em;
+  font-weight: 900;
+  margin-bottom: 0;
+  padding: 0;
+  color: rgb(34, 32, 32);
+}
+
+.home-container .text-box p span {
+  font-size: 1.1em;
+  font-weight: 900;
+}
+
+#hackABoss {
+  box-shadow: inset 0 0 0 0 #a37e03;
+  color: #a37e03;
+  margin: 0 -0.25rem;
+  padding: 0 0.25rem;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+#hackABoss:hover {
+  box-shadow: inset 200px 0 0 0 #a37e03;
+  color: white;
+}
+.home-container .text-box p {
+  padding: 0;
+  margin-top: 0;
+  font-size: 1.7em;
+}
+
+.gitImg {
+  margin-right: 20px;
+}
+.hackaboss {
+  text-decoration: none;
+  color: rgb(159, 106, 7);
+}
+
+.link-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.ul-home {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+.li-home {
+  padding: 40px;
+  list-style: none;
+  display: flex;
+  font-size: 1.5rem;
+}
+.a-home {
+  box-shadow: inset 0 0 0 0 #a37e03;
+  color: #a37e03;
+  margin: 0 -0.25rem;
+  padding: 0 0.25rem;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.a-home:hover {
+  box-shadow: inset 200px 0 0 0 #a37e03;
+  color: white;
+}

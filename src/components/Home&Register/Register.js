@@ -41,21 +41,21 @@ function Register() {
       setStatus('error');
     }
     setTimeout(() => {
-      setModal(null)
-  }, 2000);
-  }
-  if(token){
-    return <Navigate to="/"/>
+      setModal(null);
+    }, 2000);
+  };
+  if (token) {
+    return <Navigate to='/' />;
   }
 
   return (
     <section className='reg-contain'>
       <h2>Register</h2>
       <form id='register' onSubmit={handleSubmit}>
-        <img className='logo' src={logo} alt='logo' />
+        <img className='logo-register' src={logo} alt='logo' />
         <label>
           <span className='label'>Username</span>
-          <input 
+          <input
             placeholder='Username'
             required
             value={username || ''}

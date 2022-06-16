@@ -18,7 +18,11 @@
 }
 
 .error-text {
-  text-decoration: none;
+  /* text-decoration: none; */
+  color: black;
+}
+.arrow {
+  width: 20px;
 }
 
 .error-text:hover {

@@ -7,24 +7,22 @@
   align-items: center;
   color: black;
 }
-/* 
-#top-bar img {
-  max-width: 30px;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+.nav-link {
+  margin-right: 60px;
   padding-right: 50px;
-} */
+}
 
 .logo {
-  width: 30px;
+  width: 40px;
+  margin-right: 40px;
 }
 
 .profileImg {
   border: 2px solid black;
   border-radius: 100%;
-  width: 30px;
+  width: 40px;
   cursor: pointer;
+  margin-right: 40px;
 }
 
 #top-bar span {
@@ -38,12 +36,12 @@
   text-decoration: none;
 }
 #top-bar a:hover {
-  font-weight: 600;
-  color: rgb(42, 172, 10);
+  font-weight: 800;
+  color: #a37e03;
 }
 
 #top-bar a.active {
-  border-bottom: 1px solid #ccc;
+  color: #a37e03;
 }
 
 #profile {
@@ -76,7 +74,7 @@
 }
 
 .li-menu:hover {
-  background-color: rgb(42, 172, 10);
+  background-color: #a37e03;
   /* font-size: 100%; */
   color: white;
 }

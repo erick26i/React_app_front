@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useToken } from '../Context/TokenContext';
 import { useUser } from '../Context/UserContext';
-import imagen from '../img/service_bg2.svg';
+import imagen from '../img/createImg.svg';
 import './createService.css';
 
 function CreateService() {
@@ -32,43 +32,45 @@ function CreateService() {
 
   return (
     <aside className='aside'>
-      <img src={imagen} alt='img' className='service-bg' />
-      <form id='create-service' onSubmit={handleSubmit}>
-        <label>
-          <span>Title:</span>
-          <input
-            className='service-input'
-            name='title'
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </label>
-        <label>
-          <span>Description:</span>
-          <input
-            className='service-input'
-            name='description'
-            type='text'
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </label>
-        <label>
-          <span>Comments:</span>
-          <input
-            className='service-input'
-            name='comments'
-            type='text'
-            value={comments}
-            onChange={(e) => setComments(e.target.value)}
-          />
-        </label>
-        <button className='service-btn'>Create Service</button>
-        {error ? <h3 className='error-message'>{error}</h3> : null}
-        {status ? (
-          <p className='service-create'>Congratulations! Service Created!</p>
-        ) : null}
-      </form>
+      <div className='main-container'>
+        <img src={imagen} alt='img' className='service-bg' />
+        <form id='create-service' onSubmit={handleSubmit}>
+          <label>
+            <span className='span'>Title:</span>
+            <input
+              className='service-input'
+              name='title'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </label>
+          <label>
+            <span className='span'>Description:</span>
+            <input
+              className='service-input'
+              name='description'
+              type='text'
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </label>
+          <label>
+            <span className='span'>Comments:</span>
+            <input
+              className='service-input'
+              name='comments'
+              type='text'
+              value={comments}
+              onChange={(e) => setComments(e.target.value)}
+            />
+          </label>
+          <button className='service-btn'>CREATE SERVICE</button>
+          {error ? <h3 className='error-message'>{error}</h3> : null}
+          {status ? (
+            <p className='service-create'>Congratulations! Service Created!</p>
+          ) : null}
+        </form>
+      </div>
     </aside>
   );
 }
