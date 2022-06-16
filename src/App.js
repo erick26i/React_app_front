@@ -8,7 +8,6 @@ import CreateService from './services/CreateService'
 import Modal from './components/Modal/Modal'
 import { useToken } from './Context/TokenContext'
 import Error404 from './components/Misc/Error404'
-import Profile from './components/Profile/Profile'
 import './App.css'
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/service/list' element={<List />} />
         <Route path='*' element={<Error404/>}/>
-        {token && <Route path='/service/user/profile' element={<Profile />} />}
         {token && <Route path='/service/add' element={<CreateService />} />}
       </Routes>
       {modal && <Modal>{modal}</Modal>}
