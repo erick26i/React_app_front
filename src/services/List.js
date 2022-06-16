@@ -7,9 +7,9 @@ import addfile from '../img/agregar.png'
 import { useServiceId } from "../Context/IdContext"
 import AddComments from './AddComments'
 import UpLoadFile from './UpLoadFile'
-import './list.css'
 import CompleteWork from './CompleteWork'
 import DeleteService from './DeleteService'
+import './list.css'
 
 function List(){
   const [token] = useToken()

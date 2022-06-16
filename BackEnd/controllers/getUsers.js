@@ -10,7 +10,7 @@ const getUsers = async (req,res) =>{
         res.status(200).send(users[0])
         connection.release()
     } else {
-        res.send["No hay usuarios registrados"]
+        res.send("No hay usuarios registrados")
         connection.release()
     }
 

@@ -1,10 +1,7 @@
-import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDarkMode } from '../../Context/DarkModeContext'
 import { useToken } from '../../Context/TokenContext'
 import profileImg from '../../img/user.png'
-import Profile from './Profile'
-import './Profile.css'
 
 function ProfileHeader() {
   const [, setToken] = useToken()
@@ -16,13 +13,6 @@ function ProfileHeader() {
     localStorage.clear()
     setToken('')
   }
-
-  const handleClick = async (e) =>{
-    e.preventDefault()
-    console.log(<Navigate to="/"/>)
-    return <Profile/>
-    }
-  
   
   return(
     <div>
@@ -30,8 +20,7 @@ function ProfileHeader() {
         <div id="profile">
           <img className="profileLoged" src={profileImg} alt='profile-loged'/>
           <div className="menu">
-            <li className="li-menu" onClick={handleClick}>Profile</li>
-            <li className="li-menu">Setting</li>
+            <li className="li-menu"><Link id="link" to="/service/user/profile">Profile</Link></li>
             <li className="li-menu" onClick={()=>setDarkMode(!darkMode)}>Darkmode</li>
             <li className="li-menu" onClick={clearStorage}>Logout</li>
           </div>

@@ -27,17 +27,21 @@
   transition: 0.5s;
 }
 
-#top-bar a {
+#top-bar .nav-link {
   display: inline-block;
   margin: 3px;
   color: white;
   text-decoration: none;
 }
 
-#top-bar a.active {
+#top-bar .nav-link.active {
   border-bottom: 1px solid #ccc;
 }
 
+#link {
+  color:rgb(63, 63, 63);
+  text-decoration: none;
+}
 #profile{
   position: relative;
   display: inline-block;
@@ -60,7 +64,10 @@
 #profile:hover .menu{
   display:block;
   cursor: pointer;
+}
 
+.li-menu {
+  color:rgb(63, 63, 63);
 }
 
 .li-menu:hover{
@@ -73,5 +80,5 @@
 }
 
 .night {
-  background-color: brown;
+  background-color: rgb(168, 168, 168);
 }

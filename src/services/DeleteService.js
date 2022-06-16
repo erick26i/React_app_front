@@ -3,7 +3,7 @@ import { useModal } from "../Context/ModalContext"
 import { useToken } from "../Context/TokenContext"
 
 export default function DeleteService(){
-const [token] = useToken()
+    const [token] = useToken()
     const [id] = useServiceId()
     const [, setModal] = useModal()
 
