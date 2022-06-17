@@ -1,0 +1,30 @@
+.container-error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-error-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.error-img {
+  width: 500px;
+}
+
+.error-text {
+  /* text-decoration: none; */
+  color: black;
+}
+.arrow {
+  width: 20px;
+}
+
+.error-text:hover {
+  color: red;
+}

@@ -1,0 +1,7 @@
+.profileLoged {
+  margin-left: 20px;
+  border: 2px solid black;
+  border-radius: 100%;
+  width: 30px;
+  cursor: pointer;
+}

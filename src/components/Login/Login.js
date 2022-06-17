@@ -31,7 +31,7 @@ function Login() {
     } catch (e) {
       setStatus('error');
     }
-  }
+  };
   if (token) {
     return <Navigate to='/' />;
   }
@@ -40,7 +40,7 @@ function Login() {
     <aside className='log-contain'>
       <h2>Login</h2>
       <form id='login' onSubmit={handleSubmit}>
-        <img className='logo' src={logo} alt='logo' />
+        <img className='logo-login' src={logo} alt='logo' />
         <label>
           <input
             placeholder='Username'

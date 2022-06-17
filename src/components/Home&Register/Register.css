@@ -1,10 +1,10 @@
 :root {
   --btn-color: rgb(46, 46, 49);
-  --btn-bg-color: rgb(42, 172, 10);
-  --input-hoover: rgb(42, 172, 10);
+  --btn-bg-color: #a37e03;
+  --input-hoover: #a37e03;
   --input: rgb(92, 90, 90);
   --error: rgb(199, 55, 55);
-  --login-link: rgb(42, 172, 10);
+  --login-link: #a37e03;
 }
 
 .label {
@@ -105,7 +105,7 @@
   border: 1.2px solid var(--btn-bg-color);
 }
 
-.logo {
+.logo-register {
   max-width: 60px;
 }
 

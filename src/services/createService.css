@@ -1,0 +1,93 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  margin-top: 100px;
+}
+
+.main-container {
+  max-width: 600px;
+  background-color: white;
+  padding: 2rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+#create-service {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.span {
+  color: #a37e03;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.service-title {
+  font-size: 0.9rem;
+  color: rgb(11, 2, 14);
+}
+
+.service-bg {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.service-input {
+  padding: 15px;
+  float: right;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+.service-input:hover {
+  border: 2px solid #a37e03;
+}
+
+.service-btn {
+  appearance: button;
+  background-color: #a37e03;
+  border: 1px solid #a37e03;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.15;
+  overflow: visible;
+  padding: 12px 16px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: all 80ms ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.service-btn:disabled {
+  opacity: 0.5;
+}
+
+.service-btn:focus {
+  outline: 0;
+}
+
+.service-btn:hover {
+  background-color: rgb(33, 135, 7);
+  border-color: rgb(33, 135, 7);
+}
+
+.service-btn:active {
+  background-color: rgb(23, 93, 5);
+  border-color: rgb(23, 93, 5);
+}
+
+.service-create {
+  font-size: 1rem;
+  text-align: center;
+}
