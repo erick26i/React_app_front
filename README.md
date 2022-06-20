@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+PORTAL DE NECESIDADES
+Segundo proyecto de BOOTCAMP HACKABOSS
+DESCRIPCIÓN
+Implementar una API que permita ges tionar una web donde pers onas que neces iten alg ún s ervicio digital puedan pedir ayuda a otros us uarios (es tilo Fiverr). Por ejemplo: traducir un texto, editar una foto, revisar un documento, etc... Solo necesidades que puedan realizarse mediante un fichero digital.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+USUARIO ANÓNIMO:
+Ver lista de servicios requeridos
 
-## Available Scripts
+Login (Email y Password)
 
-In the project directory, you can run:
+Registro (Nombre, Email, Biografía, Foto, ...)
 
-### `npm start`
+USUARIOS REGISTRADOS:
+Crear un nuevo servicio requerido
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Título
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Explicación
 
-### `npm test`
+Fichero
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Escoger un servicio requerido por otro usuario y poder:
 
-### `npm run build`
+Hacer comentarios
+Subir un fichero con el trabajo requerido realizado
+Marcar un servicio requerido como ya resuelto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Opcional
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Gestión del perfil de usuario (Nombre, Email, Biografía, Foto, ...)
+PARA INICAR EL PROYECTOS
+1º: Haz el git clone https://github.com/EvegeniyNekrasov/portal_de_necesidades.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2º: En la consola escribe: npm install (para instalar todas las librerias necesarias)
 
-### `npm run eject`
+Para probar el uploadImg endpoint escribe http://localhost:3000/ en tu navegador y sube la imagen
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Para el headers, debemos introducir en el campo Authorization, el token suministrado.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Los campos en postman que llevan los '*' son obligatorios para rellenar.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+En todos los post incluimos los datos en el body "x-www-form-urlencoded".
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3º: Comenzamos a usar la API:
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Comprobamos con Service List, si hay algun servicio creado.
+Nos registramos con Register.
+Hacemos login, para obtener el token, nos lo muestra en la respuesta del postman, que debemos copiar para usarlo mas adelante.
+Hacemos uso del endpoint uploadImg, para añadir la imagen al usuario ya creado.
+Para crear un nuevo servicio, usamos service add, entrar en headers e introducir el token. En el Body, introduciremos los datos que nos solicita.
+Para añadir un comentario y un archivo, usamos Add Comment, tenemos que introducir en el heathers el token y usamos el enpoint uploadImg para añadir el archivo o imagen.
+Para añadir una nueva tarea, usamos New task, introducimos el id del servicio en la url, y el username en el body, tambien el token en header.
+Para marcar como completado, usamos Mark as Complete. Haciendo Post con el ID de servicio requerido, en el url.
