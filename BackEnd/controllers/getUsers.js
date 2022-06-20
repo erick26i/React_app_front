@@ -4,8 +4,7 @@ const db = require('../db')
 
 const getUsers = async (req,res) =>{
     const connection = await db.getConnection()
-    const sqlGetUser = `select id, username from users`
-    const users = await connection.query(sqlGetUser)
+    const users = await connection.query(`select id, username from users`)
     if(users[0]){
         res.status(200).send(users[0])
         connection.release()
@@ -13,7 +12,7 @@ const getUsers = async (req,res) =>{
         res.send("No hay usuarios registrados")
         connection.release()
     }
-
+    connection.release()
 }
 
 module.exports = {

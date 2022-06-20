@@ -1,13 +1,11 @@
-import { useServiceId } from '../Context/IdContext';
 import { useModal } from '../Context/ModalContext';
 import { useToken } from '../Context/TokenContext';
 import questionImg from '../img/question.svg';
 import './CompleteWork.css';
 
-export default function CompleteWork() {
+export default function CompleteWork({id, markComplete}) {
   const [token] = useToken();
-  const [id] = useServiceId();
-  const [, setModal] = useModal();
+  const [, setModal] = useModal()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +18,8 @@ export default function CompleteWork() {
         },
         body: JSON.stringify({ id }),
       });
-      return setModal(null);
+      markComplete({serviceId: id, complete: true})
+      setModal(null);
     } catch (e) {
       console.warn(e);
     }

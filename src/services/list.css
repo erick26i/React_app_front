@@ -42,6 +42,30 @@ label {
   padding-bottom: 10px;
 }
 
+.resp-bd-completed{
+  text-align: right;
+}
+
+#cont-completed{
+  background-color: rgb(39, 39, 47);
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  float: left;
+  margin: 0 0 3% 3%;
+  padding: 2%;
+  border: 0.5px solid black;
+  border-radius: 10px;
+  min-width: 200px;
+  color: white;
+  opacity:0.5;
+}
+.buttons-completed{
+  display:none;
+}
+
 h4 {
   margin: 0;
 }

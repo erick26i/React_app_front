@@ -1,11 +1,9 @@
-import { useServiceId } from '../Context/IdContext';
 import { useModal } from '../Context/ModalContext';
 import { useToken } from '../Context/TokenContext';
 import questionImg from '../img/question.svg';
 
-export default function DeleteService() {
+export default function DeleteService({id, deleteFile}) {
   const [token] = useToken();
-  const [id] = useServiceId();
   const [, setModal] = useModal();
 
   const handleSubmit = async (e) => {
@@ -19,7 +17,8 @@ export default function DeleteService() {
         },
         body: JSON.stringify({ id }),
       });
-      return setModal(null);
+      deleteFile({serviceId: id})
+      setModal(null);
     } catch (e) {
       console.warn(e);
     }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useToken } from '../Context/TokenContext';
 import { useUser } from '../Context/UserContext';
 import imagen from '../img/createImg.svg';
@@ -24,11 +25,17 @@ function CreateService() {
         },
         body: JSON.stringify({ title, description, comments, username }),
       });
-      setStatus('success');
+      setStatus('success')
     } catch (e) {
       setError('error');
     }
+    setTimeout(() => {
+      setStatus('created')
+      }, 1000)
   };
+  if(status === 'created'){
+    return <Navigate to='/service/list' />
+  }
 
   return (
     <aside className='aside'>

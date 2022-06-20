@@ -45,26 +45,21 @@ const createService = async (req, res) => {
 const markAsComplete = async (req, res) => {
     const connection = await db.getConnection()
     const idService = req.params.id
-    let sql = `UPDATE services set complete=true where id=${idService}`
-    await connection.query(sql)
+    await connection.query(`UPDATE services set complete=true where id=?`,[idService])
     res.status(200).send("[EXITO] Servicio completado !!")
     connection.release()
 }
 
 const completedService = async (req, res, next)=>{
     const connection = await db.getConnection()
-    const sql = `select * from services where complete=true`
-    await connection.query(sql)
+    await connection.query(`select * from services where complete=true`)
     next()
 }
 
 const deleteService = async (req, res)=>{
     const connection = await db.getConnection()
-    const idService = req.params.id
-    const sql = `DELETE FROM aux where id_service=${idService}`
-    const sql2 = `DELETE FROM services where id=${idService}`
-    await connection.query(sql)
-    await connection.query(sql2)
+    await connection.query(`DELETE FROM aux where id_service=?`,[req.params.id])
+    await connection.query(`DELETE FROM services where id=?`,[req.params.id])
     res.status(200).send("[EXITO] Servicio eliminado !!")
     connection.release()
 }

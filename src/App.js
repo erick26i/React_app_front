@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import { useModal } from './Context/ModalContext';
-
 import Header from './components/Header/Header';
 import Home from './components/Home&Register/Home';
 import List from './services/List';

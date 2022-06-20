@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import { useServiceId } from '../Context/IdContext';
 import { useModal } from '../Context/ModalContext';
 import { useToken } from '../Context/TokenContext';
 import uploadFile from '../img/upload-file.svg';
 import './uploadFile.css';
 
-export default function UpLoadFile() {
+export default function UpLoadFile({id, updateFile}) {
   const [files, setFiles] = useState(null);
   const [status, setStatus] = useState('');
   const [token] = useToken();
   const [, setModal] = useModal();
-  const [id] = useServiceId('');
 
   const sendHandler = async (e) => {
     e.preventDefault();
@@ -31,6 +29,7 @@ export default function UpLoadFile() {
     } else {
       setStatus('Not-file');
     }
+    updateFile({serviceId: id, updateFile: files.name})
     document.getElementById('fileinput').reset();
     setFiles(null);
     setTimeout(() => {
@@ -44,8 +43,8 @@ export default function UpLoadFile() {
         <img src={uploadFile} alt='upload-file' />
         <p>Upload File</p>
       </div>
-      <div upload-btn-wrapper>
-        <label for='upload-file' className='upload-file-label'>
+      <div upload-btn-wrapper="true">
+        <label htmlFor='upload-file' className='upload-file-label'>
           Upload file
         </label>
         <input

@@ -1,19 +1,18 @@
 require("dotenv").config();
 
 const db = require('../db')
-let updateComment;
 
 const addComment = async (req, res) => {
     const {comments, id} = req.body
+    let connection;
     try{
     if (!id || !comments) {
         res.status(403).send("[ERROR] Faltan datos para añadir un comentario")
         return
     }
-    const connection = await db.getConnection()
-    updateComment = `UPDATE services SET comments= "${comments}" where id=${id}`
-    
-    await connection.query(updateComment)
+    connection = await db.getConnection()
+
+    await connection.query(`UPDATE services SET comments=? where id=?`, [comments, id])
     res.status(200).send("[EXITO] Comentario añadido correctamente")
     connection.release()
 } catch {

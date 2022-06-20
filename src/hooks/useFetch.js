@@ -4,7 +4,7 @@ import { useToken } from '../Context/TokenContext'
 const useFetch = (url) => {
   const [data, setData] = useState(null)
   const [token] = useToken()
-
+  
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -22,8 +22,8 @@ const useFetch = (url) => {
     loadData()
   }, [url, token])
 
-  return data
-
+ 
+   return {data, setData} 
 }
 
 export default useFetch

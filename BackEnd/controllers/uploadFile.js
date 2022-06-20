@@ -1,6 +1,4 @@
-const path = require('path')
 const db = require('../db')
-
 
 const uploadFile = async (req, res) => {
     if( !req.file || !req.params ){
@@ -8,8 +6,7 @@ const uploadFile = async (req, res) => {
         return
     }
     const connection = await db.getConnection()
-    const setFile = `UPDATE services SET file= "${req.file.filename}" where id=${req.params.id}`
-    await connection.query(setFile)
+    await connection.query(`UPDATE services SET file=? where id=?`,[req.file.filename, req.params.id])
     res.sendStatus(200)
     connection.release()
 }

@@ -16,9 +16,7 @@ const register = async (req, res) => {
     const connection = await db.getConnection()
 
  // Comprobamos si el usuario ya existe error (409)
-    const sqlGetUser = `select * from users where username="${username}"`
-
-    const users = await connection.query(sqlGetUser)
+    const users = await connection.query(`select * from users where username=?`,[username])
 
     if (users[0].length !== 0) {
         res.sendStatus(409)
@@ -31,10 +29,9 @@ const register = async (req, res) => {
 
 // Registramos en DB
     
-    const sqlInsertUser = `
-                    insert into users (username, password, mail, biography) 
-                    values ("${username}", "${hiddenPassword}", "${mail}", "${biography}")`
-       await connection.query(sqlInsertUser)
+   await connection.query(`
+       insert into users (username, password, mail, biography) 
+       values (?, ?, ?, ?)`,[username, hiddenPassword, mail, biography])
        connection.release()
        res.sendStatus(200)
 }

@@ -1,9 +1,6 @@
 import { useToken } from '../Context/TokenContext';
 import useFetch from '../hooks/useFetch';
-
 import { useModal } from '../Context/ModalContext';
-
-import { useServiceId } from '../Context/IdContext';
 import AddComments from './AddComments';
 import UpLoadFile from './UpLoadFile';
 import CompleteWork from './CompleteWork';
@@ -19,11 +16,40 @@ import avatarSvg from '../img/avatar.svg';
 import './list.css';
 
 function List() {
-  const [token] = useToken();
-  const [, setModal] = useModal('');
-  const [, setId] = useServiceId('');
-  const list = useFetch('http://127.0.0.1:3000/service/list');
-  const users = useFetch('http://127.0.0.1:3000/service/users');
+  const [token] = useToken()
+  const [, setModal] = useModal('')
+  const {data: list, setData: setList} = useFetch('http://127.0.0.1:3000/service/list')
+  const {data: users} = useFetch('http://127.0.0.1:3000/service/users')
+  /* BUTTONS LOGIC */
+  const updateComment = ({serviceId, comment}) =>{
+    setList(list.map(item => {
+      if(item.id === serviceId) {
+        item.comments = comment;
+      }
+      return item;
+    }))
+  }
+  const markComplete = ({serviceId, complete}) =>{
+    setList(list.map(item => {
+      if(item.id === serviceId) {
+        item.complete = complete;
+      }
+      return item;
+    }))
+  }
+  const updateFile = ({serviceId, updateFile})=>{
+    setList(list.map(item => {
+      if(item.id === serviceId) {
+        item.file = updateFile;
+      }
+      return item;
+    }))
+  }
+  const deleteFile = ({serviceId})=>{
+    setList(list.filter((item) => 
+    item.id !== serviceId
+    ))
+  }
 
   return (
     <>
@@ -31,19 +57,18 @@ function List() {
       <div id='service-list'>
         <h2>
           <img src={serviceLogo} alt='logo' className='service-logo' />
-          Servicios Disponibles
+          Available Services
         </h2>
       </div>
       <div className='list-container'>
         <div className='list-key'>
           {list?.map((lis) => (
-            <span id='cont' key={lis.id}>
-              {/* USER RENDER */}
+            <span id={!lis.complete ? 'cont' : 'cont-completed'} key={lis.id}>
+            {/* USER RENDER */}
               <h4>
                 {users?.map((u) => (
-                  <aside key={u.id} className='user-container'>
-                    <img id='avatar' src={avatarSvg} alt='avatar_img' />
-                    {u.id === lis.userId && u.username}
+                  <aside key={u.id} className='user-container'> 
+                    {u.id === lis.userId && <><img id='avatar' src={avatarSvg} alt='avatar_img'/>{u.username}</>}
                   </aside>
                 ))}
               </h4>
@@ -56,22 +81,26 @@ function List() {
               {/* COMMENTS RENDER */}
               <label>Comments: </label>{' '}
               <span className='resp-bd '>
-                {!lis.comments ? 'There is not data' : lis.comments}
+              {!lis.comments ? 'There is not data' : lis.comments}
+              {' '}
               </span>
               {/* FILE RENDER */}
               <label>Files: </label>{' '}
               <span className='resp-bd '>
-                {!lis.file && 'There is not data'}{' '}
+                {!lis.file ? 'There is not data' : lis.file}{' '}
+              </span>
+              {''}
+              <span className='resp-bd-completed'>
+                {!lis.complete ? '' : 'Completed'}{' '}
               </span>
               {/* BUTTONS */}
-              <div className='buttons-service'>
+              <div className={!lis.complete ? 'buttons-service' : 'buttons-completed'}>
                 {token && (
                   <img
                     className='message'
                     src={comentario}
                     onClick={() => {
-                      setId(lis.id);
-                      setModal(<AddComments />);
+                      setModal(<AddComments id={lis.id} updateComment={updateComment}/>)
                     }}
                     alt='add-comment'
                   />
@@ -81,8 +110,7 @@ function List() {
                     className='checkmark'
                     src={checkmark}
                     onClick={() => {
-                      setId(lis.id);
-                      setModal(<CompleteWork />);
+                      setModal(<CompleteWork id={lis.id} markComplete={markComplete}/>);
                     }}
                     alt='checkmark-btn'
                   />
@@ -92,8 +120,7 @@ function List() {
                     className='add-file'
                     src={upload}
                     onClick={() => {
-                      setId(lis.id);
-                      setModal(<UpLoadFile />);
+                      setModal(<UpLoadFile id={lis.id} updateFile={updateFile}/>);
                     }}
                     alt='add-btn'
                   />
@@ -104,8 +131,7 @@ function List() {
                       className='del-btn'
                       src={close}
                       onClick={() => {
-                        setId(lis.id);
-                        setModal(<DeleteService />);
+                        setModal(<DeleteService id={lis.id} deleteFile={deleteFile}/>);
                       }}
                       alt='add-btn'
                     />
@@ -114,7 +140,7 @@ function List() {
               </div>
             </span>
           ))}
-        </div>
+        </div> 
       </div>
     </>
   );
